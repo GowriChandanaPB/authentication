@@ -1,5 +1,6 @@
 import 'package:authentication/components/my_button.dart';
 import 'package:authentication/components/my_textfield.dart';
+import 'package:authentication/components/square_tail.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -8,6 +9,9 @@ class LoginPage extends StatelessWidget {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
+  // sign user in method
+  void signUserIn() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +19,7 @@ class LoginPage extends StatelessWidget {
       body: SafeArea(
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 50),
               // logo
@@ -62,14 +67,78 @@ class LoginPage extends StatelessWidget {
           
               const SizedBox(height: 25),
               // sign in button
-              MyButton(),
+              MyButton(
+                onTap: signUserIn,
+              ),
+
+
+              // or continue with button
+              const SizedBox(height: 50),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        'Or continue with',
+                        style: TextStyle(
+                          color: Colors.grey[700],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
 
           
-              // or continue with button
-          
+              const SizedBox(height: 50),
               // google and apple sign in button
-          
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+              SquareTail(imagePath: 'lib/images/google.png'),
+              SizedBox(width: 10),
+              SquareTail(imagePath: 'lib/images/Apple-Logo.png'),
+              SizedBox(width: 10),
+              SquareTail(imagePath: 'lib/images/facebook_logo.png'),
+                ],
+              ),
+
               // not a member? register now
+              const SizedBox(height: 50),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Not a member?',
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  const Text(
+                    'Register now',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
@@ -77,3 +146,5 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
+
+// 5.03
